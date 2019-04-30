@@ -1,0 +1,29 @@
+{
+    "name": "Table data to json",
+    "manifest_version": 2,
+    "version": "1.0",
+    "description": "Jsonize",
+    "browser_action": {
+        "default_title": "jsonize",
+        "default_popup": "index.html"
+    },
+    "permission": [
+        "tab",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": [
+                "jquery.min.js",
+                "jsonize.js"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+}
