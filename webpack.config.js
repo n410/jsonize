@@ -19,6 +19,18 @@ module.exports = [
         module: {
             rules: [
               {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader'],
+              },
+              {
+                test: /\.(ttf|eot|svg|woff|woff2)(\?.+)?$/,
+                loader: 'file-loader',
+                options: {
+                  name: '[hash:12].[ext]',
+                  publicPath : path => 'dist/' + path,
+                }
+              },
+              {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
               },
