@@ -37,25 +37,4 @@ module.exports = [
             ]
           },
     },
-    {
-        name: 'option',
-        cache: true,
-        entry: './src/option/index.tsx',
-        output: {
-            path: __dirname+'/dist',
-            filename: 'option.js'
-        },
-        resolve: {
-            extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
-        },
-        devtool: 'source-map',
-        module: {
-            rules: [
-              {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-              },
-            ]
-          },
-    }
 ];
