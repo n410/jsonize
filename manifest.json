@@ -3,9 +3,13 @@
     "manifest_version": 2,
     "version": "1.0",
     "description": "Jsonize",
+    "icons": {
+        "128": "resources/icon128.png"
+    },
     "browser_action": {
         "default_title": "jsonize",
-        "default_popup": "index.html"
+        "default_popup": "index.html",
+        "default_icon": "resources/icon128.png"
     },
     "permission": [
         "tab",
