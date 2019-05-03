@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "lint": "tslint -c tslint.json 'src/**/*.ts{,x}'"
+    "lint": "tslint -c tslint.json 'src/**/*.ts{,x}'",
+    "zip": "zip -r ../jsonize.zip dist index.html jsonize.js manifest.json resources"
   },
   "dependencies": {
     "element-react": "^1.4.33",

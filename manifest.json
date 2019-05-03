@@ -1,25 +1,21 @@
 {
-    "name": "Table data to json",
+    "name": "Jsonize",
     "manifest_version": 2,
     "version": "1.0",
-    "description": "Jsonize",
+    "description": "Table data to json",
     "icons": {
         "128": "resources/icon128.png"
     },
     "browser_action": {
-        "default_title": "jsonize",
+        "default_title": "Jsonize",
         "default_popup": "index.html",
         "default_icon": "resources/icon128.png"
     },
     "permission": [
-        "tab",
+        "activeTab",
         "http://*/*",
         "https://*/*"
     ],
-    "options_ui": {
-        "page": "options.html",
-        "chrome_style": true
-    },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],

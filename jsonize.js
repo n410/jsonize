@@ -47,11 +47,11 @@ function tableToJson(t) {
     const jsonizedRow = {};
     const th = tr.querySelector("th");
     const jsonizedTh = getElementTextObject(th);
-    jsonizedRow.th = jsonizedTh;
-    jsonizedRow.tds = [];
+    jsonizedRow.header = jsonizedTh;
+    jsonizedRow.data = [];
     for(let td of tr.querySelectorAll("td")) {
       const jsonizedTd = getElementTextObject(td);
-      jsonizedRow.tds.push(jsonizedTd);
+      jsonizedRow.data.push(jsonizedTd);
     }
     tableJson.contents.push(jsonizedRow);
   }

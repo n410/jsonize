@@ -30,15 +30,17 @@ export default function Main() {
         { type: "start" },
         (response: IContentScriptRespons) => {
           console.log("chrome content_script response", response);
-          setResponse(response);
+          if (response) {
+            setResponse(response);
+          }
         }
       );
     });
   }
 
-  function stringify(response) {
+  function stringify(json) {
     try {
-      return JSON.stringify(response, null, 4);
+      return JSON.stringify(json, null, 4);
     } catch (err) {
       console.error(err);
       return "";
@@ -80,7 +82,7 @@ export default function Main() {
         <Header response={resp} onSelect={onSelect} />
       </div>
       <Input
-        autosize={{ minRows: 10, maxRows: 30 }}
+        autosize={{ minRows: 20, maxRows: 40 }}
         type="textarea"
         value={value}
         onChange={onChange}
