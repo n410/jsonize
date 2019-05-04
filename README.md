@@ -1,3 +1,3 @@
-# table-to-json-ex
+# Jsonize
 
-テーブル構造のデータをjsonizeするextension
+テーブル構造のデータをjson化するchrome拡張
