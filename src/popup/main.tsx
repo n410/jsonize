@@ -23,17 +23,20 @@ export default function Main() {
     return undefined;
   }, []);
 
-  function chromeContentMessage() {
-    browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
-      browser.tabs
-        .sendMessage(tabs[0].id, { type: "start" })
-        .then((response: IContentScriptRespons) => {
-          console.log("chrome content_script response", response);
-          if (response) {
-            setResponse(response);
-          }
-        });
+  async function chromeContentMessage() {
+    const tabs = await browser.tabs.query({
+      active: true,
+      currentWindow: true
     });
+    const response: IContentScriptRespons = await browser.tabs.sendMessage(
+      tabs[0].id,
+      { type: "start" }
+    );
+
+    console.log("chrome content_script response", response);
+    if (response) {
+      setResponse(response);
+    }
   }
 
   function stringify(json) {
