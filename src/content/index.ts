@@ -125,9 +125,4 @@ function ulsToJson(): IUlistJson[] {
   return ulsJson;
 }
 
-browser.runtime.onMessage.addListener(async request => {
-  if (request.type === "start") {
-    const response = { table: tablesToJson(), ul: ulsToJson() };
-    return response;
-  }
-});
+browser.runtime.sendMessage({ table: tablesToJson(), ul: ulsToJson() });
