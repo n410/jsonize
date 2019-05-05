@@ -1,16 +1,19 @@
 const conf = {
     prodMode: process.env.NODE_ENV === 'production',
   };
-  
+
 module.exports = [
     {
         name: 'bundle',
         mode: conf.prodMode ? 'production' : 'development',
         cache: true,
-        entry: './src/popup/index.tsx',
+        entry: {
+          popup: './src/popup/index.tsx',
+          content: './src/content/index.ts'
+        },
         output: {
             path: __dirname+'/dist',
-            filename: 'bundle.js'
+            filename: '[name].bundle.js'
         },
         resolve: {
             extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
