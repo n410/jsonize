@@ -1,4 +1,4 @@
-declare const chrome;
+import { browser } from "webextension-polyfill-ts";
 import { Button, Input } from "element-react/next";
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -24,17 +24,15 @@ export default function Main() {
   }, []);
 
   function chromeContentMessage() {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      chrome.tabs.sendMessage(
-        tabs[0].id,
-        { type: "start" },
-        (response: IContentScriptRespons) => {
+    browser.tabs.query({ active: true, currentWindow: true }).then(tabs => {
+      browser.tabs
+        .sendMessage(tabs[0].id, { type: "start" })
+        .then((response: IContentScriptRespons) => {
           console.log("chrome content_script response", response);
           if (response) {
             setResponse(response);
           }
-        }
-      );
+        });
     });
   }
 
