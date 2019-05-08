@@ -8,6 +8,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "lint": "tslint -c tslint.json 'src/**/*.ts{,x}'",
+    "fix": "tslint -c tslint.json 'src/**/*.ts{,x}' --fix",
     "zip": "zip -r ../jsonize.zip dist index.html jsonize.js manifest.json resources"
   },
   "dependencies": {

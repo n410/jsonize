@@ -1,7 +1,7 @@
-import { browser, Runtime } from "webextension-polyfill-ts";
 import { Button, Input } from "element-react/next";
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { browser, Runtime } from "webextension-polyfill-ts";
 import { Header } from "./header";
 
 export interface IContentScriptRespons {
