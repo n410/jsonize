@@ -1,4 +1,4 @@
-declare const chrome;
+import { browser, Runtime } from "webextension-polyfill-ts";
 import { Button, Input } from "element-react/next";
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -23,19 +23,31 @@ export default function Main() {
     return undefined;
   }, []);
 
-  function chromeContentMessage() {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      chrome.tabs.sendMessage(
-        tabs[0].id,
-        { type: "start" },
-        (response: IContentScriptRespons) => {
-          console.log("chrome content_script response", response);
-          if (response) {
-            setResponse(response);
-          }
-        }
-      );
+  async function chromeContentMessage() {
+    const tabs = await browser.tabs.query({
+      active: true,
+      currentWindow: true
     });
+
+    if (tabs.length) {
+      const tab = tabs[0];
+      const handleMessage = (
+        message: IContentScriptRespons,
+        sender: Runtime.MessageSender
+      ) => {
+        if (tab.url === sender.url) {
+          console.log("chrome content_script message", message);
+          setResponse(message);
+          browser.runtime.onMessage.removeListener(handleMessage);
+        }
+      };
+      browser.runtime.onMessage.addListener(handleMessage);
+
+      await browser.tabs.executeScript({
+        file: "dist/content.bundle.js",
+        runAt: "document_start"
+      });
+    }
   }
 
   function stringify(json) {
