@@ -31,11 +31,11 @@ export const Header = React.memo<{
     if (tag === "ul") {
       return contentJson.value;
     }
-    if (contentJson.th && contentJson.th.value) {
-      return contentJson.th.value;
+    if (contentJson.header && contentJson.header.value) {
+      return contentJson.header.value;
     }
-    if (contentJson.tds && contentJson.tds.length > 0) {
-      return contentJson.tds[0].value || "";
+    if (contentJson.data && contentJson.data.length > 0) {
+      return contentJson.data[0].value || "";
     }
     return "";
   }
@@ -53,7 +53,7 @@ export const Header = React.memo<{
         <Menu.SubMenu index="table" title="Table">
           {table.map((t, i) => (
             <Menu.Item key={t.name || `Option${i}`} index={`${i}/table`}>
-              {t.name || `要素${i + 1}[${trim(getHeadline("table", i))}]`}
+              {t.name || `${i + 1}[${trim(getHeadline("table", i))}]`}
             </Menu.Item>
           ))}
         </Menu.SubMenu>
@@ -62,7 +62,7 @@ export const Header = React.memo<{
         <Menu.SubMenu index="ul" title="Ul">
           {ul.map((u, i) => (
             <Menu.Item key={u.name || `Option${i}`} index={`${i}/ul`}>
-              {u.name || `要素${i + 1}[${trim(getHeadline("ul", i))}]`}
+              {u.name || `${i + 1}[${trim(getHeadline("ul", i))}]`}
             </Menu.Item>
           ))}
         </Menu.SubMenu>

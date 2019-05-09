@@ -102,7 +102,7 @@ export default function Main() {
         style={{ margin: "10px 0" }}
       />
       <Button type="primary" disabled={!value} onClick={copyToClipboard}>
-        クリップボードにコピー
+        Copy to Clipboard
       </Button>
     </div>
   );

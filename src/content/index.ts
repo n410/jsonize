@@ -87,7 +87,10 @@ function tablesToJson(): ITableJson[] {
     return [];
   }
   for (const t of tables) {
-    tablesJson.push(tableToJson(t));
+    const tableData = tableToJson(t);
+    if (tableData.contents.length > 0) {
+      tablesJson.push(tableData);
+    }
   }
   return tablesJson;
 }
@@ -120,7 +123,10 @@ function ulsToJson(): IUlistJson[] {
     return [];
   }
   for (const u of uls) {
-    ulsJson.push(ulToJson(u));
+    const ulData = ulToJson(u);
+    if (ulData.contents.length > 0) {
+      ulsJson.push(ulData);
+    }
   }
   return ulsJson;
 }
